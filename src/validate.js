@@ -126,10 +126,9 @@ angular.module('angularPayments')
     restrict: 'A',
     require: 'ngModel',
     link: function(scope, elem, attr, ctrl){
-
       var type = attr.paymentsValidate;
-      
-      elem.bind('blur', function(e){
+
+      ctrl.$parsers.unshift(function(viewValue) {
         ctrl.$setValidity(type, _Validate(type, elem.val()));
       });
     }
