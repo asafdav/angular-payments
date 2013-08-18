@@ -61,8 +61,8 @@ angular.module('angularPayments')
 
         if(!(expMonthUsed && expYearUsed)){
           exp = Common.parseExpiry(formData.expiry)
-          scope.expMonth = exp.month
-          scope.expYear = exp.year
+          formData.expMonth = exp.month
+          formData.expYear = exp.year
         }
 
         var button = form.find('button');
@@ -80,8 +80,8 @@ angular.module('angularPayments')
 
         }
 
-        scope.expiryMonth = expMonthUsed ? scope.expMonth : null;
-        scope.expiryYear = expYearUsed ? scope.expMonth : null;
+        scope.expiryMonth = expMonthUsed ? formData.expMonth : null;
+        scope.expiryYear = expYearUsed ? formData.expYear : null;
 
         scope.expiryMonth = angular.isObject(scope.expMonth) ? scope.expMonth.$viewValue : scope.expMonth;
         scope.expiryYear = angular.isObject(scope.expiryYear) ? scope.expiryYear.$viewValue : scope.expiryYear;
